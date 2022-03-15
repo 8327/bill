@@ -22,4 +22,5 @@ diff -u <(tail -n 1 bill-output-now.txt) <(tail -n 1 bill-output-then.txt)
 ## Todo:
 - [ ] File list via command line flags (either file with file list or file list in flag)
 - [ ] Why is this better then the standard sha256sum Linux command? (didn't knew a day ago that this existed;-)
+    - displays overall hash
 - [ ] Installer
