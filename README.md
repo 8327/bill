@@ -15,3 +15,7 @@ e4ca6c1cf5be7a08eb9e5cc7b268f56f235bc58fafb1383fa4273d47422f0727 /tmp/6m.txt
 38ab174789ddb553151e176cde4e6d65d8a31171dc6e2bb167ac12b066a62169
 ```
 
+Changes in the files in the input list can then be 'detected' using diff:
+```console
+diff -u <(tail -n 1 bill-output-now.txt) <(tail -n 1 bill-output-then.txt)
+```
