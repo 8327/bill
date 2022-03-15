@@ -6,18 +6,20 @@
 import os
 import hashlib
 
+def do_hash(input: str) -> str:
+    return hashlib.sha256(input).hexdigest()
+
 files = ['/tmp/1m.txt', '/tmp/2m.txt', '/tmp/3m.txt', '/tmp/4m.txt',
          '/tmp/5m.txt', '/tmp/6m.txt']
-hashes = ''
+
+hashes: str = ''
 
 for file in files:
-    size = os.path.getsize(file)
-    f = open(file, "rb")
-    bytes = f.read()
-    hash = hashlib.sha256(bytes).hexdigest()
+    fh = open(file, "rb")
+    contents = fh.read()
+    hash = do_hash(contents)
     hashes += hash
     print(hash, file)
 
-hash_hash = hashlib.sha256(str(hashes).encode('utf-8')).hexdigest()
-print(hash_hash)
+print(do_hash(str(hashes).encode('utf-8')))
 
