@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# prints the sha256 hashes for a list of files (per file) plus the sha256 hash
-# of all hashes
-
 import argparse
 import hashlib
 import os
@@ -10,7 +7,7 @@ import os
 def do_hash(input: str) -> str:
     return hashlib.sha256(input).hexdigest()
 
-parser = argparse.ArgumentParser(description="bill")
+parser = argparse.ArgumentParser(description="Prints the SHA256 hashes for a list of files plus the SHA256 hash of all hashes")
 parser.add_argument(
     'files',
     type=str,
