@@ -3,14 +3,35 @@
 # prints the sha256 hashes for a list of files (per file) plus the sha256 hash
 # of all hashes
 
-import os
+import argparse
 import hashlib
+import os
 
 def do_hash(input: str) -> str:
     return hashlib.sha256(input).hexdigest()
 
-files = ['/tmp/1m.txt', '/tmp/2m.txt', '/tmp/3m.txt', '/tmp/4m.txt',
-         '/tmp/5m.txt', '/tmp/6m.txt']
+parser = argparse.ArgumentParser(description="bill")
+parser.add_argument(
+    'files',
+    type=str,
+    nargs='*',
+    help="list of input files")
+parser.add_argument(
+    '--listfile',
+    '-l',
+    type=str,
+    required=False,
+    help="file that holds a input filename list, one filename per line")
+args = parser.parse_args()
+
+files = []
+if args.listfile:
+    f = open(args.listfile, "r")
+    lines = f.readlines()
+    for line in lines:
+        files.append(line.rstrip())
+else:
+    files = args.files
 
 hashes: str = ''
 
